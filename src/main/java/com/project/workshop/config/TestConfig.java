@@ -1,10 +1,6 @@
 package com.project.workshop.config;
 
-import com.project.workshop.entities.Category;
-import com.project.workshop.entities.Order;
-import com.project.workshop.entities.OrderItem;
-import com.project.workshop.entities.Product;
-import com.project.workshop.entities.User;
+import com.project.workshop.entities.*;
 import com.project.workshop.enums.OrderStatus;
 import com.project.workshop.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +71,10 @@ public class TestConfig implements CommandLineRunner {
 
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
+
+        Payment pay1 = new Payment(null, Instant.parse("2023-10-26T15:50:18Z"), o1);
+        o1.setPayment(pay1);
+
+        orderRepository.save(o1);
     }
 }
